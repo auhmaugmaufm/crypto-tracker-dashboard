@@ -13,8 +13,8 @@ const ClientHome = () => {
             const res = await fetch("/api/prices")
             const rawData = await res.json()
             setData(rawData)
-            console.log(rawData)
-            console.log(data);
+            // console.log(rawData)
+            // console.log(data);
 
         }
         load()
@@ -22,7 +22,7 @@ const ClientHome = () => {
 
 
     return (
-        <div className="flex flex-col  m-20 rounded-4xl ">
+        <div className="flex flex-col  m-20 rounded-4xl bg-blue-100">
             <div className="flex justify-center">
                 {data.length > 0 ? (
                     <ul className="flex flex-wrap gap-5 p-5 ">
@@ -34,13 +34,16 @@ const ClientHome = () => {
                     <p>Loading...</p>
                 )}
             </div>
-            <div className="flex justify-center">
-                {data.length > 0 ? (
-                    <PriceChart coins={data} />
+            <div className="flex justify-center p-8">
+                <div className="w-200 h-auto">
+                    {data.length > 0 ? (
+                        <PriceChart coins={data} />
 
-                ) : (
-                    <p>Loading...</p>
-                )}
+                    ) : (
+                        <p>Loading...</p>
+                    )}
+                </div>
+
             </div>
         </div>
     )
