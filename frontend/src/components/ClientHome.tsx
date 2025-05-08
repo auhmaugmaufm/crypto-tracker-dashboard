@@ -4,18 +4,21 @@ import { useEffect, useState } from "react";
 
 import CryptoCard from "./CryptoCard";
 import { PriceChart } from "./PriceChart";
+import { showLoader, hideLoader } from './Preloader'
 
 const ClientHome = () => {
     const [data, setData] = useState<any>([])
 
     useEffect(() => {
         const load = async () => {
+            console.log("fetch data: ")
+            showLoader()
             const res = await fetch("/api/prices")
             const rawData = await res.json()
             setData(rawData)
             // console.log(rawData)
-            // console.log(data);
-
+            console.log(data);
+            hideLoader()
         }
         load()
     }, [])
@@ -31,7 +34,9 @@ const ClientHome = () => {
                         ))}
                     </ul>
                 ) : (
-                    <p>Loading...</p>
+                    <div>
+                    
+                    </div>
                 )}
             </div>
             <div className="flex justify-center p-8">
@@ -40,7 +45,9 @@ const ClientHome = () => {
                         <PriceChart coins={data} />
 
                     ) : (
-                        <p>Loading...</p>
+                        <div>
+
+                        </div>
                     )}
                 </div>
 

@@ -7,6 +7,7 @@ interface Coin {
   price_change_percentage_24h: number;
   high_24h: number;
   low_24h: number;
+  ath_change_percentage: number;
 }
 
 const CryptoCard = ({ coin }: { coin: Coin }) => {
@@ -31,6 +32,9 @@ const CryptoCard = ({ coin }: { coin: Coin }) => {
       </div>
       <div className="flex flex-row">
         <p>📊 Low (24h): </p><p className="text-red-600">${coin.low_24h.toLocaleString()}</p>
+      </div>
+      <div className="flex flex-row">
+        <p>📊 ATH Change: </p><p className="text-red-600">{coin.ath_change_percentage.toLocaleString()}%</p>
       </div>
     </li>
   );
